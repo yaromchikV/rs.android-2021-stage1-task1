@@ -21,7 +21,8 @@ class Task1StringParserTest {
                 " I said we wanted to write our own stories, create our own history," +
                 " said Klopp(the boss of Liverpool[English football club])."
         val result = arrayOf("link", "3500", "the boss of Liverpool[English football club]", "English football club")
-        assertArrayEquals(result, stringParser.getResult(inputStr))
+        val actualResult = stringParser.getResult(inputStr)
+        assertArrayEquals(result, actualResult)
     }
 
     @Test
