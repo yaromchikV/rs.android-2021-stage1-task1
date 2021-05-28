@@ -2,25 +2,18 @@ package subtask1
 
 class HappyArray {
 
-    // TODO: Complete the following function
     fun convertToHappy(sadArray: IntArray): IntArray {
-        val happyArray: MutableList<Int> = mutableListOf()
-        var sourceArray = sadArray
-        while (true) {
-            val tempArray = sourceArray
-            for (i in tempArray.indices) {
-                if (i == 0 || i == tempArray.size - 1) {
-                    happyArray.add(tempArray[i])
-                } else if (tempArray[i] <= tempArray[i - 1] + tempArray[i + 1]) {
-                    happyArray.add(tempArray[i])
+        val happyArray = sadArray.toMutableList()
+        var i = 0
+        while (i < happyArray.size) {
+            if (i != 0 && i != happyArray.size - 1) {
+                if (happyArray[i] > happyArray[i - 1] + happyArray[i + 1]) {
+                    happyArray.removeAt(i)
+                    i -= 2
                 }
             }
-            val happy = happyArray.toIntArray()
-            if (sourceArray contentEquals happy)
-                break
-            sourceArray = happy
-            happyArray.clear()
+            i += 1
         }
-        return sourceArray
+        return happyArray.toIntArray()
     }
 }
